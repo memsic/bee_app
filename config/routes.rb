@@ -1,4 +1,6 @@
 BeesApp::Application.routes.draw do
+  get "queens/new"
+
   get "bees/new"
 
   root to: 'static_pages#home'
