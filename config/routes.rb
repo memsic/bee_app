@@ -1,11 +1,11 @@
 BeesApp::Application.routes.draw do
-  get "queens/new"
-
-  get "bees/new"
+  resources :bees
+  resources :queens
 
   root to: 'static_pages#home'
   
-  match '/signup',  to: 'bees#new'
+  match '/beesignup',  to: 'bees#new'
+  match '/queensignup',  to: 'queens#new'
   
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
