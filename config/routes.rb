@@ -1,6 +1,8 @@
 BeesApp::Application.routes.draw do
   resources :bees
   resources :queens
+  resources :bee_sessions, only: [:new, :create, :destroy]
+  resources :queen_sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
   
