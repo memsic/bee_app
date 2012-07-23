@@ -1,13 +1,44 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "bee app", '#', id: "logo" %>
+      <%= link_to "bee app", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-          <li><%= link_to "Help",    help_path %></li>
-          <li><%= link_to "Bee sign-in", '#' %></li>
-		  <li><%= link_to "Queen sign-in", '#' %></li>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Help", help_path %></li>
+          <% if beesigned_in? %>
+            <li><%= link_to "Bees", '#' %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_bee %></li>
+                <li><%= link_to "Settings", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", beesignout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% elsif queensigned_in? %>
+            <li><%= link_to "Queens", '#' %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_queen %></li>
+                <li><%= link_to "Settings", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", queensignout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+		  <% else %>
+			<li><%= link_to "Sign in", beesignin_path %></li>
+          <% end %>
         </ul>
       </nav>
     </div>

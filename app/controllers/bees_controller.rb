@@ -11,6 +11,7 @@ class BeesController < ApplicationController
   def create
     @bee = Bee.new(params[:bee])
     if @bee.save
+      beesign_in @bee
       flash[:success] = "Welcome to the Bee App!"
       redirect_to @bee
     else

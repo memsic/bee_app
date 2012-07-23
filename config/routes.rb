@@ -7,7 +7,12 @@ BeesApp::Application.routes.draw do
   root to: 'static_pages#home'
   
   match '/beesignup',  to: 'bees#new'
+  match '/beesignin',  to: 'bee_sessions#new'
+  match '/beesignout', to: 'bee_sessions#destroy', via: :delete
+  
   match '/queensignup',  to: 'queens#new'
+  match '/queensignin',  to: 'queen_sessions#new'
+  match '/queensignout', to: 'queen_sessions#destroy', via: :delete
   
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'

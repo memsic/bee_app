@@ -11,6 +11,7 @@ class QueensController < ApplicationController
   def create
     @queen = Queen.new(params[:queen])
     if @queen.save
+      queensign_in @queen
       flash[:success] = "Welcome to the Bee App!"      
       redirect_to @queen
     else
